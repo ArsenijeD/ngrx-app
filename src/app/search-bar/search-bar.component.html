@@ -8,12 +8,11 @@
                     <input placeholder="Enter Repository Name" type="text" class="form-control col-12" name="gitUsername" id="repository" [(ngModel)]="gitRepository">
                 </div>
                 <div class="col-2 submit">
-                    <button type="submit" class="btn btn-primary col-12" [disabled]="gitUsername.trim() === '' || gitRepository.trim() === ''"> Check </button>
+                    <button type="submit" class="btn btn-primary col-12" (click)="onSubmit()" [disabled]="gitUsername.trim() === '' || gitRepository.trim() === ''"> Check </button>
                 </div>
             </form>
         </div>
     </div>
-    <!-- Add if when finish with store creation -->
-    <div class="progress row">
+    <div class="progress row" *ngIf="showProgress | async">
         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
     </div>
