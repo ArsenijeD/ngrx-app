@@ -1,6 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromFlags from './../flags/reducer/flags.reducer';
+import * as fromFlags from './../modules/flags/reducer/flags.reducer';
 import { NormalizedState, normalized } from 'ngrx-normalizr';
 
 export interface AppState extends NormalizedState {

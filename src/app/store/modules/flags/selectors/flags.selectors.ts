@@ -1,10 +1,15 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../../reducer/app.reducer';
+import { AppState } from '../../../reducer/app.reducer';
 
-export const selectFlags = (state: AppState) => state.flags;
+export const getFlags = (state: AppState) => state.flags;
 
 export const selectShowSearchBarProgress = createSelector(
-    selectFlags,
+    getFlags,
     (flags) => flags.showSearchBarProgress
+);
+
+export const isDataLoaded = createSelector(
+    getFlags,
+    (flags) => flags.dataLoaded
 );
 

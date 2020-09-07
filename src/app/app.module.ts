@@ -7,14 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { EntitiesEffects } from './store/entities/effects/entities.effects';
+import { EntitiesEffects } from './store/modules/entities/effects/entities.effects';
 import * as fromApp from './store/reducer/app.reducer';
 import { environment } from 'src/environments/environment';
+import { DevelopersListComponent } from './developers-list/developers-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DevelopersListComponent
   ],
   imports: [
     BrowserModule,

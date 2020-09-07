@@ -7,8 +7,8 @@ import * as EntitiesActions from '../actions/entities.actions';
 import * as FlagsActions from '../../flags/actions/flags.actions';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
-import { Commit } from '../../schemas/commit';
-import { commitSchema } from '../../schemas/commits.schema';
+import { Commit } from '../../../schemas/commit';
+import { commitSchema } from '../../../schemas/commits.schema';
 
 @Injectable()
 export class EntitiesEffects {

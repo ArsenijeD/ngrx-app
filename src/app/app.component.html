@@ -6,11 +6,22 @@
     <div class="row search-bar-row justify-content-around align-items-center">
         <app-search-bar class="col-6 search-bar-root-col"></app-search-bar>
     </div>
-    <div class="row panels-row justify-content-around">
-        <!-- <app-developers-list></app-developers-list>
-        <app-pie-chart></app-pie-chart>
+    <div class="row panels-row justify-content-around" *ngIf="isDataLoaded | async">
+      <div class="col-2 panel-placeholder">
+        <app-developers-list></app-developers-list>
+      </div>
+      <div class="col-3 panel-placeholder">
+        fff
+      </div>
+      <div class="col-2 panel-placeholder">
+        fff
+      </div>
+      <div class="col-3 panel-placeholder">
+        fff
+      </div>
+        <!-- <app-pie-chart></app-pie-chart>
         <app-commit-form></app-commit-form>
-        <app-commits-graph></app-commits-graph> -->
+        <app-commits-graph></app-commits-graph>  -->
     </div>
   </div>
 </div>
