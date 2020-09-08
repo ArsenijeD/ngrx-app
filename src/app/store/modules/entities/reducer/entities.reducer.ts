@@ -23,7 +23,6 @@ export function entitiesReducer(state: State = initialState, action: EntitiesAct
 
     switch (action.type) {
         case EntitiesActions.SET_ENTITIES:
-            console.log(action.payload);
             const normalizedData = normalize(action.payload, commitCollectionSchema);
             return {
                 ...state,
