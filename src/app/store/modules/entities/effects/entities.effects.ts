@@ -1,14 +1,12 @@
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { switchMap, catchError, map, mergeMap } from 'rxjs/operators';
-import { AddData } from 'ngrx-normalizr';
+import { switchMap, catchError, mergeMap } from 'rxjs/operators';
+import { normalize } from 'normalizr';
 
 import * as EntitiesActions from '../actions/entities.actions';
 import * as FlagsActions from '../../flags/actions/flags.actions';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
-import { Commit } from '../../../schemas/commit';
-import { commitSchema } from '../../../schemas/commits.schema';
 
 @Injectable()
 export class EntitiesEffects {
@@ -25,13 +23,13 @@ export class EntitiesEffects {
                 setEntitiesAction.payload.gitUsername + '/' + setEntitiesAction.payload.gitRepository + '/commits')
             .pipe(
                 mergeMap((response: any) => [
-                    new AddData<Commit>({ data: response, schema: commitSchema}),
+                    new EntitiesActions.SetEntities(response),
                     new FlagsActions.SetDataLoaded(),
                     new FlagsActions.ShowSearchBarProgress()
                 ]),
                 catchError((error: HttpErrorResponse) => {
                     // TODO: Handle this
-                    return of();
+                    return of(new FlagsActions.ShowSearchBarProgress());
                 })
             );
         })

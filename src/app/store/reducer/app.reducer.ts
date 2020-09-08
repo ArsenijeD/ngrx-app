@@ -1,14 +1,14 @@
 import { ActionReducerMap } from '@ngrx/store';
 
 import * as fromFlags from './../modules/flags/reducer/flags.reducer';
-import { NormalizedState, normalized } from 'ngrx-normalizr';
+import * as fromEntities from './../modules/entities/reducer/entities.reducer';
 
-export interface AppState extends NormalizedState {
+export interface AppState {
+  normalized: fromEntities.State;
   flags: fromFlags.State;
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
-    normalized,
-    // Entities reducer removed because entities are directly mapped on normalized slice of a state
+    normalized: fromEntities.entitiesReducer,
     flags: fromFlags.flagsReducer
 };

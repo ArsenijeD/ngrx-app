@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import * as fromApp from './../store/reducer/app.reducer';
 import * as EntitiesSelectrs from './../store/modules/entities/selectors/entities.selectors';
+import * as EntitiesActions from '../store/modules/entities/actions/entities.actions';
 
 @Component({
   selector: 'app-developers-list',
@@ -28,6 +29,10 @@ export class DevelopersListComponent implements OnInit {
     this.removedDevelopersNames.subscribe({next: (names: string[]) => {
       this.showRemovedDevelopers = names.length !== 0;
     }});
+  }
+
+  onDeveloperClick(developersName: string): void {
+    this.store.dispatch(new EntitiesActions.ChangeDevelopersStatus({developersName}));
   }
 
 }

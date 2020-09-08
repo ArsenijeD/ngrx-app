@@ -20,3 +20,8 @@ export const commitSchema = new schema.Entity(
         }
     }
 );
+export const commitCollectionSchema = new schema.Array(commitSchema);
+
+commitSchema.define({
+    parents: commitCollectionSchema
+})

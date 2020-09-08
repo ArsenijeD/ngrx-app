@@ -4,14 +4,14 @@
         <h6 class="card-title" *ngIf="showActiveDevelopers">Active:</h6> 
         <div class="row active-developers-row" *ngIf="showActiveDevelopers">
             <div class="col-4">
-                <a href="#" class="badge badge-primary" *ngFor="let activeDeveloperName of activeDevelopersNames | async">{{activeDeveloperName}}</a>
+                <a href="#" class="badge badge-primary" (click)="onDeveloperClick(activeDeveloperName)" *ngFor="let activeDeveloperName of activeDevelopersNames | async">{{activeDeveloperName}}</a>
             </div>
         </div>
         <hr *ngIf="showRemovedDevelopers && showActiveDevelopers">
         <h6 class="card-title" *ngIf="showRemovedDevelopers">Removed:</h6>
         <div class="row removed-developers-row" *ngIf="showRemovedDevelopers">
             <div class="col-4">
-                <a href="#" class="badge badge-secondary" *ngFor="let removedDeveloperName of removedDevelopersNames | async">{{removedDeveloperName}}</a>
+                <a href="#" class="badge badge-secondary" (click)="onDeveloperClick(removedDeveloperName)" *ngFor="let removedDeveloperName of removedDevelopersNames | async">{{removedDeveloperName}}</a>
             </div>
         </div>
     </div>
