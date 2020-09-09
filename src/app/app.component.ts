@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isDataLoaded = this.store.select(FlagsSelectors.isDataLoaded);
   }
 }

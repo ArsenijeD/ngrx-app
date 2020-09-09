@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {ApexNonAxisChartSeries, ApexResponsive, ApexChart, ChartComponent} from 'ng-apexcharts';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as fromApp from './../store/reducer/app.reducer';
@@ -24,8 +23,6 @@ export class PieChartComponent implements OnInit {
   @ViewChild('chart', {static: false}) chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  activeDevelopersNames: string[] = [];
-  commitsPerActiveDevelopers: number[] = [];
   showPieChart = false;
 
   constructor(private store: Store<fromApp.AppState>) {
@@ -54,10 +51,9 @@ export class PieChartComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.store.select(EntitiesSelectors.getCommitsPerActiveDevelopers)
     .subscribe({next: (response: {}) => {
-      // Its needed to call map on Object.values because ReactApexChart doesnt work with Array(), only with []
       this.chartOptions.series = Object.values(response);
       this.chartOptions.labels = Object.keys(response);
       this.showPieChart = Object.keys(response).length !== 0;

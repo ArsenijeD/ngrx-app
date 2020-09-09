@@ -1,0 +1,19 @@
+<div class="card text-left row commits-graph-card-row border-primary">
+    <h5 class="card-header bg-primary text-white">Commits Graph</h5>
+    <div class="card-body row justify-content-center align-items-center">
+        <div>
+            <ngx-graph
+            class="chart-container"
+            [view]="[500, 500]"
+            [autoZoom]=true
+            [links]="links"
+            [nodes]="nodes"
+            [animate]=true
+            [autoCenter]=true
+            [enableZoom]=true
+            [zoomLevel]=100
+            >
+            </ngx-graph>
+        </div>
+    </div>
+</div>

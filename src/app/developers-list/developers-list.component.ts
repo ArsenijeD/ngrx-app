@@ -20,7 +20,7 @@ export class DevelopersListComponent implements OnInit {
 
   constructor(private store: Store<fromApp.AppState>) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.activeDevelopersNames = this.store.select(EntitiesSelectors.getActiveDevelopersNames);
     this.removedDevelopersNames = this.store.select(EntitiesSelectors.getRemovedDevelopersNames);
     this.activeDevelopersNames.subscribe({next: (names: string[]) => {

@@ -20,7 +20,7 @@ export class SearchBarComponent implements OnInit {
 
   constructor(private store: Store<fromApp.AppState>) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.showProgress = this.store.select(FlagsSelectors.selectShowSearchBarProgress);
   }
 
