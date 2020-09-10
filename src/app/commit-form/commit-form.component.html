@@ -1,0 +1,39 @@
+<div class="card text-left row commit-form-card-row border-primary">
+    <h5 class="card-header bg-primary text-white">Selected Commit</h5>
+    <div class="card-body row justify-content-center align-items-center">
+        <form class="commit-form">
+            <div class="form-group">
+                <label for="shaInput">SHA: </label>
+                <input type="email" class="form-control" id="shaInput" disabled>
+            </div>
+            <div class="form-group">
+                <label for="messageInput">Message: </label>
+                <input type="email" class="form-control" id="messageInput" disabled>
+            </div>
+            <div class="form-group">
+                <label for="developerInput">Developer:</label>
+                <select id="developerInput" class="form-control">
+                    <option hidden selected></option>
+                    <option> A</option>
+                </select>
+            </div>
+            <div class="form-group parents-group">
+                <label for="developerInput">Parents:</label>
+                <div class="row justify-content-end list-groups-row" >
+                    <ul class="list-group col-5 parents-list">
+                        <a href="#"  class="list-group-item list-group-item-action py-0">test</a>
+                    </ul>
+                    <ul class="list-group col-5 non-parents-list">
+                        <a href="#" class="list-group-item list-group-item-action py-0">test</a>
+                    </ul>
+                </div>
+                <!-- <div class="row justify-content-center list-groups-row align-items-center" >
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">No parents currently..</div>
+                </div> -->
+            </div>
+            <div class="row justify-content-end button-div align-items-center">
+                <button type="submit" class="btn btn-secondary">Remove</button>
+            </div>
+        </form>
+    </div>
+</div>

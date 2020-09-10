@@ -1,0 +1,40 @@
+.commit-form-card-row {
+    height: 100%;
+}
+.card-body {
+    height: 80%;
+}
+.commit-form {
+    height: 100%;
+}
+.list-groups-row {
+    height: 70%;
+    width: 100%;
+}
+.parents-list {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0;
+    margin-right: 2%;
+}
+.non-parents-list {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0;
+    margin-left: 2%;
+}
+.parents-group {
+    height: 25%;
+}
+.button-div {
+    width: 100%;
+    height: 10%;
+    margin-left: 1%;
+}
+.progress-bar {
+    width: 100%;
+    margin-left: 14%;
+}
+.list-group-item-action {
+    text-align: center;
+}

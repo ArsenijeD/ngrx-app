@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { DevelopersListComponent } from './developers-list/developers-list.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { CommitsGraphComponent } from './commits-graph/commits-graph.component';
+import { CommitFormComponent } from './commit-form/commit-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CommitsGraphComponent } from './commits-graph/commits-graph.component';
     SearchBarComponent,
     DevelopersListComponent,
     PieChartComponent,
-    CommitsGraphComponent
+    CommitsGraphComponent,
+    CommitFormComponent
   ],
   imports: [
     BrowserModule,
