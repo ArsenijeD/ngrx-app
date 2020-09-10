@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import * as fromApp from './../store/reducer/app.reducer';
 import * as EntitiesSelectors from './../store/modules/entities/selectors/entities.selectors';
+import * as EntitiesActions from './../store/modules/entities/actions/entities.actions';
 import { Commit } from '../store/schemas/commit';
 
 @Component({
@@ -32,11 +33,18 @@ export class CommitsGraphComponent implements OnInit {
     this.links = this.getLinks();
   }
 
+  onNodeActivate(event: any) {
+    if (this.selectedCommit.sha) {
+      this.store.dispatch(new EntitiesActions.ChangeCommitSelectedStatus({ sha: this.selectedCommit.sha }));
+    }
+    this.store.dispatch(new EntitiesActions.ChangeCommitSelectedStatus({ sha: event.value.name }));
+  }
+
   getNodes(): any {
-    return this.activeCommits.reverse().map((activeCommit: Commit, index: number) => {
+    return this.activeCommits.reverse().map((activeCommit: Commit) => {
       return {
           id: activeCommit.sha,
-          label: index + 1 + ''
+          label: activeCommit.sha
       };
   });
   }

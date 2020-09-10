@@ -4,14 +4,14 @@
         <div>
             <ngx-graph
             class="chart-container"
-            [view]="[500, 500]"
+            [view]="[500, 250]"
             [autoZoom]=true
             [links]="links"
             [nodes]="nodes"
-            [animate]=true
             [autoCenter]=true
-            [enableZoom]=true
-            [zoomLevel]=100
+            [animate]=true
+            [legend]=true
+            (activate)="onNodeActivate($event)"
             >
             </ngx-graph>
         </div>

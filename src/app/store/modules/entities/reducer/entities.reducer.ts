@@ -46,6 +46,20 @@ export function entitiesReducer(state: State = initialState, action: EntitiesAct
                     commits: {...state.entities.commits}
                 },
             };
+        case EntitiesActions.CHANGE_COMMIT_SELECTED_STATUS:
+            return {
+                ...state,
+                entities: {
+                    commits: {
+                        ...state.entities.commits,
+                        [action.payload.sha]: {
+                            ...state.entities.commits[action.payload.sha],
+                            selected: !state.entities.commits[action.payload.sha].selected
+                        }
+                    },
+                    developers: {...state.entities.developers}
+                },
+            };
         default:
             return state;
     }
