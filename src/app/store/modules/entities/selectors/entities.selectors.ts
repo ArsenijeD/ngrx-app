@@ -70,3 +70,16 @@ export const getSelectedCommit = createSelector(
     }
 );
 
+export const getNonParentsForSelectedCommit = createSelector(
+    getSelectedCommit,
+    getResult,
+    (selectedCommit: Commit, result: string[]) => {
+        // eslint-disable-next-line
+        return result.filter((commitSha: string) => {
+            if (selectedCommit.sha && !selectedCommit.parents.includes(commitSha) && selectedCommit.sha !== commitSha) {
+                return commitSha;
+            }
+        });
+    }
+);
+

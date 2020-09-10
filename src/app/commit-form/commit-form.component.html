@@ -4,35 +4,35 @@
         <form class="commit-form">
             <div class="form-group">
                 <label for="shaInput">SHA: </label>
-                <input type="email" class="form-control" id="shaInput" disabled>
+                <input type="email" class="form-control" name="shaInput" id="shaInput" [(ngModel)]="selectedCommit.sha" disabled>
             </div>
             <div class="form-group">
                 <label for="messageInput">Message: </label>
-                <input type="email" class="form-control" id="messageInput" disabled>
+                <input type="email" class="form-control" name="messageInput" id="messageInput" [(ngModel)]="selectedCommit.message" disabled>
             </div>
             <div class="form-group">
                 <label for="developerInput">Developer:</label>
-                <select id="developerInput" class="form-control">
-                    <option hidden selected></option>
-                    <option> A</option>
+                <select id="developerInput" name="developerInput" class="form-control" [value]="selectedCommit.developer" [disabled]="formDisabled">
+                    <option> </option>
+                    <option *ngFor="let activeDevelopersName of activeDevelopersNames">{{activeDevelopersName}}</option>
                 </select>
             </div>
             <div class="form-group parents-group">
                 <label for="developerInput">Parents:</label>
-                <div class="row justify-content-end list-groups-row" >
+                <div class="row justify-content-end list-groups-row" *ngIf="!formDisabled">
                     <ul class="list-group col-5 parents-list">
-                        <a href="#"  class="list-group-item list-group-item-action py-0">test</a>
+                        <a href="#"  *ngFor="let parent of selectedCommit.parents" class="list-group-item list-group-item-action py-0">{{parent.substring(0, 2)}}..</a>
                     </ul>
                     <ul class="list-group col-5 non-parents-list">
-                        <a href="#" class="list-group-item list-group-item-action py-0">test</a>
+                        <a href="#" *ngFor="let nonParent of nonParents" class="list-group-item list-group-item-action py-0">{{nonParent.substring(0, 2)}}..</a>
                     </ul>
                 </div>
-                <!-- <div class="row justify-content-center list-groups-row align-items-center" >
+                <div class="row justify-content-center list-groups-row align-items-center" *ngIf="formDisabled">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">No parents currently..</div>
-                </div> -->
+                </div>
             </div>
             <div class="row justify-content-end button-div align-items-center">
-                <button type="submit" class="btn btn-secondary">Remove</button>
+                <button type="submit" class="btn btn-secondary" [disabled]="formDisabled">Remove</button>
             </div>
         </form>
     </div>
