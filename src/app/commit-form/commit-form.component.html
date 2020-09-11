@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="developerInput">Developer:</label>
-                <select id="developerInput" name="developerInput" class="form-control" [value]="selectedCommit.developer" [disabled]="formDisabled">
+                <select id="developerInput" name="developerInput" class="form-control" [value]="selectedCommit.developer" (change)="onDeveloperChange($event.target.value)" [disabled]="formDisabled">
                     <option> </option>
                     <option *ngFor="let activeDevelopersName of activeDevelopersNames">{{activeDevelopersName}}</option>
                 </select>
@@ -21,10 +21,10 @@
                 <label for="developerInput">Parents:</label>
                 <div class="row justify-content-end list-groups-row" *ngIf="!formDisabled">
                     <ul class="list-group col-5 parents-list">
-                        <a href="#"  *ngFor="let parent of selectedCommit.parents" class="list-group-item list-group-item-action py-0">{{parent.substring(0, 2)}}..</a>
+                        <a href="#"  *ngFor="let parent of selectedCommit.parents" class="list-group-item list-group-item-action py-0" (click)="onParentClick(parent)">{{parent.substring(0, 2)}}..</a>
                     </ul>
                     <ul class="list-group col-5 non-parents-list">
-                        <a href="#" *ngFor="let nonParent of nonParents" class="list-group-item list-group-item-action py-0">{{nonParent.substring(0, 2)}}..</a>
+                        <a href="#" *ngFor="let nonParent of nonParents" class="list-group-item list-group-item-action py-0" (click)="onNonParentClick(nonParent)">{{nonParent.substring(0, 2)}}..</a>
                     </ul>
                 </div>
                 <div class="row justify-content-center list-groups-row align-items-center" *ngIf="formDisabled">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="row justify-content-end button-div align-items-center">
-                <button type="submit" class="btn btn-secondary" [disabled]="formDisabled">Remove</button>
+                <button type="submit" class="btn btn-secondary" [disabled]="formDisabled" (click)="onRemoveClick()">Remove</button>
             </div>
         </form>
     </div>

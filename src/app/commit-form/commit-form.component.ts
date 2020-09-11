@@ -33,4 +33,20 @@ export class CommitFormComponent implements OnInit {
     }});
   }
 
+  onDeveloperChange(newDeveloper: string): void {
+    this.store.dispatch(new EntitiesActions.ChangeCommitsDeveloper({newDeveloper, sha: this.selectedCommit.sha}));
+  }
+
+  onParentClick(nonParentSha: string): void {
+    this.store.dispatch(new EntitiesActions.RemoveParent({commitSha: this.selectedCommit.sha, oldParentSha: nonParentSha}));
+  }
+
+  onNonParentClick(parentSha: string): void {
+    this.store.dispatch(new EntitiesActions.AddParent({commitSha: this.selectedCommit.sha, newParentSha: parentSha}));
+  }
+
+  onRemoveClick(): void {
+    this.store.dispatch(new EntitiesActions.SetCommitAsRemoved({sha: this.selectedCommit.sha}));
+  }
+
 }

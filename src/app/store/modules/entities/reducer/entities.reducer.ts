@@ -60,6 +60,66 @@ export function entitiesReducer(state: State = initialState, action: EntitiesAct
                     developers: {...state.entities.developers}
                 },
             };
+        case EntitiesActions.CHANGE_COMMITS_DEVELOPER:
+            return {
+                ...state,
+                entities: {
+                    commits: {
+                        ...state.entities.commits,
+                        [action.payload.sha]: {
+                            ...state.entities.commits[action.payload.sha],
+                            developer: action.payload.newDeveloper
+                        }
+                    },
+                    developers: {...state.entities.developers}
+                }
+            };
+        case EntitiesActions.ADD_PARENT:
+            return {
+                ...state,
+                entities: {
+                    commits: {
+                        ...state.entities.commits,
+                        [action.payload.commitSha]: {
+                            ...state.entities.commits[action.payload.commitSha],
+                            parents: [...state.entities.commits[action.payload.commitSha].parents, action.payload.newParentSha]
+                        }
+                    },
+                    developers: {...state.entities.developers}
+                }
+            };
+        case EntitiesActions.REMOVE_PARENT:
+            const index = state.entities.commits[action.payload.commitSha].parents.indexOf(action.payload.oldParentSha);
+            return {
+                ...state,
+                entities: {
+                    ...state.entities,
+                    commits: {
+                        ...state.entities.commits,
+                        [action.payload.commitSha]: {
+                            ...state.entities.commits[action.payload.commitSha],
+                            parents: [...state.entities.commits[action.payload.commitSha].parents.slice(0, index),
+                                        ...state.entities.commits[action.payload.commitSha].parents.slice(index + 1)]
+                        }
+                    },
+                    developers: {...state.entities.developers}
+                }
+            };
+        case EntitiesActions.SET_COMMIT_AS_REMOVED:
+            return {
+                ...state,
+                entities: {
+                    ...state.entities,
+                    commits: {
+                        ...state.entities.commits,
+                        [action.payload.sha]: {
+                            ...state.entities.commits[action.payload.sha],
+                            removed: true
+                        }
+                    },
+                    developers: {...state.entities.developers}
+                }
+            };
         default:
             return state;
     }

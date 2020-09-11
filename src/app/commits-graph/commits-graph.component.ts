@@ -22,15 +22,14 @@ export class CommitsGraphComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.store.select(EntitiesSelectors.getActiveCommits).subscribe({next: (commits: Commit[]) =>
-      this.activeCommits = commits
-    });
+    this.store.select(EntitiesSelectors.getActiveCommits).subscribe({next: (commits: Commit[]) => {
+      this.activeCommits = commits;
+      this.nodes = this.getNodes();
+      this.links = this.getLinks();
+    }});
     this.store.select(EntitiesSelectors.getSelectedCommit).subscribe({next: (commit: Commit) =>
       this.selectedCommit = commit
     });
-
-    this.nodes = this.getNodes();
-    this.links = this.getLinks();
   }
 
   onNodeActivate(event: any) {
